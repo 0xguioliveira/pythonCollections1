@@ -23,11 +23,12 @@ if 22 in idades:
     idades.remove(22)
 print(idades)
 
-idades.insert(0, 20)  # insert faz com que seja possível aficionar, na posição que quisermos, um elemento.
+idades.insert(0, 20)  # insert faz com que seja possível adicionar, na posição que quisermos, um elemento.
 print(idades)
 
-idades.extend([53, 55])  # extend EXTENDE a lista adicionando todos elementos desse interável.
+idades.extend([53, 55])  # extend EXTENDE a lista adicionando todos elementos desse interável, ao final.
 print(idades)
+print("-------------------------------------")
 
 #para saber a idade no ano que vem
 idades_ano_que_vem = [idade + 1 for idade in idades]
@@ -38,11 +39,15 @@ print(idades_ano_que_vem)
 print([idade + 1 for idade in idades])
 print([idade for idade in idades if idade > 20]) #list comprehension
 
-#juntando as duas lists comprehension em uma função e uma list comprehension
+print("-------------------------------------")
+
+#juntando as duas lists comprehension numa função e uma list comprehension
 def proximo_ano(idade):
     return idade + 1
 
 print([proximo_ano(idade)for idade in idades if idade > 20])
+
+print("-------------------------------------")
 
 #Objetos próprios
 
@@ -60,7 +65,9 @@ conta_do_gui = ContaCorrente(52)
 conta_do_gui.deposita(15766)
 print(conta_do_gui)
 
-conta_da_dani =ContaCorrente(94)
+conta_da_dani = ContaCorrente(94)
+conta_da_dani.deposita(10000)
+
 
 def deposita_para_todas_as_contas(contas):
     for conta in contas:
@@ -70,15 +77,18 @@ contas = [conta_do_gui, conta_da_dani]
 deposita_para_todas_as_contas(contas)
 print(contas[0], contas[1])
 
+print("-------------------------------------")
+
 #Tuplas (são imutáveis) - usado quando a posição daquele dado importa
 
 
 guilherme = ("Guilherme", 23, 1999)
 daniela = ("Daniela", 22, 2000 )
-rebeca = (21, "Rebeca", 2001) # maneira ruim pois muda a ordem e pode virar uma bagunça
+rebeca = (21, "Rebeca", 2001) # maneira ruim, pois muda a ordem e pode virar uma bagunça
 
 conta_gui_tupla = (52, 2000)
 print(conta_gui_tupla)
+
 def deposita(conta): #variação "funcional" (separando o comportamento dos dados), diferente de POO.
     novo_saldo = conta[1] +100
     codigo = conta[0]
@@ -90,7 +100,9 @@ print(conta_gui_tupla)
 usuarios = [guilherme, daniela]
 print(usuarios)
 usuarios.append(("Rebeca", 21, 2001)) #adicionando através de tuplas
+print(usuarios)
 
+print("-------------------------------------")
 #Herança e polimorfismo
 class Conta:
     def __init__(self, codigo):
@@ -133,6 +145,7 @@ for duck in contass:
     duck.passa_o_mes() #duck type
 print(duck)
 
+print("-------------------------------------")
 
 #Igualdade e o __eq__
 @total_ordering # para ganharmos critérios de ordenações como "<="
@@ -182,7 +195,7 @@ print("-------------------------------------")
 for i in range(len(idadess)):
     print(i, idadess[i])
 print("-------------------------------------")
-print(list(enumerate(idadess))) #enumerate facilita a implementação do código range(len(idadess))
+print(list(enumerate(idadess))) #enumerate facilita a implementação do código range(len(idadess)), retornanrdo o índice e o valor
 print("-------------------------------------")
 for valor in enumerate(idadess):
     print(valor)
@@ -204,6 +217,7 @@ print("-------------------------------------")
 print(idadess)
 idadess.sort() #relembrando: listas são mutáveis.
 print(idadess)
+print("-------------------------------------")
 
 conta_do_guilherme = ContaSalario(89)
 conta_do_guilherme.deposita(1000)
@@ -211,7 +225,7 @@ conta_da_daniela = ContaSalario(850)
 conta_da_daniela.deposita(1500)
 conta_da_rebeca = ContaSalario(100)
 conta_da_rebeca.deposita(1500)
-print("-------------------------------------")
+
 contas_para_ordernar = [conta_da_daniela, conta_do_guilherme, conta_da_rebeca]
 for laco in sorted(contas_para_ordernar, key= attrgetter("_saldo", "_codigo")):
     print(laco)
